@@ -16,7 +16,7 @@
             {{ number }}
           </li>
         </div>
-        <div *ngIf="!onlyOdd">
+        <!-- <div *ngIf="!onlyOdd">
             <li
             class="list-group-item"
             [ngClass]="{odd: number % 2 !== 0}"
@@ -25,8 +25,8 @@
             >
             {{ number }}
           </li>
-        </div>
-        <ng-template [ngIf]="!onlyOdd">
+        </div> -->
+        <!-- <ng-template [ngIf]="!onlyOdd">
           <div>
               <li
               class="list-group-item"
@@ -37,7 +37,17 @@
               {{ number }}
             </li>
           </div>
-        </ng-template>
+        </ng-template> -->
+        <div *appUnless="onlyOdd">
+            <li
+            class="list-group-item"
+            [ngClass]="{odd: number % 2 !== 0}"
+            [ngStyle]="{backgroundColor: number % 2 !== 0 ? 'yellow' : 'transparent'}"
+            *ngFor="let number of evenNumbers"
+            >
+            {{ number }}
+          </li>
+        </div>
       </ul>
       <p appBasicHighlight> style me by basic directive</p>
       <p appBetterHighlight> style me by better directive</p>
